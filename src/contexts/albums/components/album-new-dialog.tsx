@@ -12,38 +12,16 @@ import Button from "../../../components/button";
 import InputText from "../../../components/input-text";
 import Text from "../../../components/text";
 import SelectCheckboxIllustration from "../../../assets/images/select-checkbox.svg?react";
-import type { Photo } from "../../photos/models/photo";
 import Skeleton from "../../../components/skeleton";
 import PhotoImageSelectable from "../../photos/components/photo-image-selectable";
+import usePhotos from "../../photos/hooks/use-photos";
 
 interface AlbumNewDialogProps {
   trigger: React.ReactNode;
 }
 
 export default function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
-  const isLoadingPhotos = false;
-  const photos: Photo[] = [
-    {
-      id: "123",
-      title: "Olá Mundo",
-      imageId: "/images/portrait-tower.png",
-      albums: [
-        { id: "321", title: "Album 1" },
-        { id: "3214", title: "Album 2" },
-        { id: "3215", title: "Album 3" },
-      ],
-    },
-    {
-      id: "132",
-      title: "Olá Mundo",
-      imageId: "/images/portrait-tower.png",
-      albums: [
-        { id: "321", title: "Album 1" },
-        { id: "3214", title: "Album 2" },
-        { id: "3215", title: "Album 3" },
-      ],
-    },
-  ];
+  const { photos, isLoadingPhotos } = usePhotos();
 
   function handleTogglePhoto(selected: boolean, photoId: string) {
     console.log(selected, photoId);
@@ -69,7 +47,7 @@ export default function AlbumNewDialog({ trigger }: AlbumNewDialogProps) {
                   <PhotoImageSelectable
                     key={photo.id}
                     imageClassName="w-20 h-20"
-                    src="/images/portrait-tower.png"
+                    src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`}
                     alt="Imagem"
                     title={photo.title}
                     onSelectImage={(selected) =>

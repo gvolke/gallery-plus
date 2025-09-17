@@ -7,13 +7,13 @@ import { useNavigate } from "react-router";
 import cx from "classnames";
 
 interface PhotosNavigatorProps extends React.ComponentProps<"div"> {
-  previewPhotoId?: string;
+  previousPhotoId?: string;
   nextPhotoId?: string;
   loading?: boolean;
 }
 
 export default function PhotosNavigator({
-  previewPhotoId,
+  previousPhotoId,
   nextPhotoId,
   loading,
   className,
@@ -28,8 +28,8 @@ export default function PhotosNavigator({
           <ButtonIcon
             icon={ArrowLeftIcon}
             variant="secondary"
-            disabled={!previewPhotoId}
-            onClick={() => navigate(`/fotos/${previewPhotoId}`)}
+            disabled={!previousPhotoId}
+            onClick={() => navigate(`/fotos/${previousPhotoId}`)}
           />
           <Button
             icon={ArrowRightIcon}
