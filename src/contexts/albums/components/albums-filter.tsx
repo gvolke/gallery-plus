@@ -2,7 +2,7 @@ import Button from "../../../components/button";
 import Skeleton from "../../../components/skeleton";
 import Text from "../../../components/text";
 import type { Album } from "../models/album";
-import cx from "classNames";
+import cx from "classnames";
 
 interface AlbumFilterProps extends React.ComponentProps<"div"> {
   albums: Album[];

@@ -14,9 +14,9 @@ import Alert from "../../../components/alert";
 import InputSingleFile from "../../../components/input-single-file";
 import ImagePreview from "../../../components/image-preview";
 import Text from "../../../components/text";
-import type { Album } from "../../albums/models/album";
 import Skeleton from "../../../components/skeleton";
 import { useForm } from "react-hook-form";
+import useAlbums from "../../albums/hooks/use-albums";
 
 interface PhotoNewDialogProps {
   trigger: React.ReactNode;
@@ -24,14 +24,7 @@ interface PhotoNewDialogProps {
 
 export default function PhotoNewDialog({ trigger }: PhotoNewDialogProps) {
   const form = useForm();
-
-  const isLoadingAlbum = false;
-
-  const albuns: Album[] = [
-    { id: "321", title: "Gatos" },
-    { id: "3214", title: "Paisagens" },
-    { id: "3215", title: "Favoritas" },
-  ];
+  const { albums, isLoadingAlbums } = useAlbums();
 
   return (
     <Dialog>
@@ -59,9 +52,9 @@ export default function PhotoNewDialog({ trigger }: PhotoNewDialogProps) {
             <Text variant="label-small">Selecionar álbuns</Text>
 
             <div className="flex flex-wrap gap-3">
-              {!isLoadingAlbum &&
-                albuns.length > 0 &&
-                albuns.map((album) => (
+              {!isLoadingAlbums &&
+                albums.length > 0 &&
+                albums.map((album) => (
                   <Button
                     key={album.id}
                     size="sm"
@@ -72,7 +65,7 @@ export default function PhotoNewDialog({ trigger }: PhotoNewDialogProps) {
                   </Button>
                 ))}
 
-              {isLoadingAlbum &&
+              {isLoadingAlbums &&
                 Array.from({ length: 5 }).map((_, index) => (
                   <Skeleton
                     key={`album-loading-${index}`}
