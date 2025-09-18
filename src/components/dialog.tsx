@@ -69,6 +69,7 @@ export function DialogContent({
     <DialogPrimitive.Portal>
       <DialogOverlay />
       <DialogPrimitive.Content
+        aria-describedby={undefined}
         ref={ref}
         className={cn(
           `
