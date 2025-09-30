@@ -6,6 +6,7 @@ import PagePhotoDetails from "./pages/page-photo-details";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NuqsAdapter } from "nuqs/adapters/react-router/v7";
 import { Toaster } from "sonner";
+import PageAlbumsList from "./pages/page-albums-list";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ export default function App() {
               <Route index element={<PageHome />} />
               <Route path="/fotos/:id" element={<PagePhotoDetails />} />
               <Route path="/componentes" element={<PageComponents />} />
+              <Route path="/albums" element={<PageAlbumsList />} />
             </Route>
           </Routes>
         </BrowserRouter>

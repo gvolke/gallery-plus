@@ -1,4 +1,5 @@
-import Button from "../../../components/button";
+import { Link } from "react-router";
+import Button, { buttonVariants } from "../../../components/button";
 import Skeleton from "../../../components/skeleton";
 import Text from "../../../components/text";
 import usePhotos from "../../photos/hooks/use-photos";
@@ -23,7 +24,15 @@ export default function AlbumsFilter({
       className={cx("flex items-center gap-3.5 overflow-x-auto", className)}
       {...props}
     >
-      <Text variant="heading-small">Álbuns</Text>
+      <Link
+        to={"/albums"}
+        className={buttonVariants({
+          variant: "secondary",
+          className: "px-2 py-2",
+        })}
+      >
+        <Text variant="heading-small">Álbuns</Text>
+      </Link>
       <div className="flex gap-3">
         {!loading ? (
           <>
