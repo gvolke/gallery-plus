@@ -60,6 +60,21 @@ export default function usePhoto(id?: string) {
     }
   }
 
+  async function updatePhoto(photoId: string, title: string) {
+    try {
+      await api.patch(`/photos/${photoId}`, {
+        title,
+      });
+
+      queryClient.invalidateQueries({ queryKey: ["photo"] });
+
+      toast.success("Título da foto alterado com sucesso");
+    } catch (error) {
+      toast.error("Erro ao atualizar título da foto");
+      throw error;
+    }
+  }
+
   return {
     photo: data,
     nextPhotoId: data?.nextPhotoId,
@@ -67,5 +82,6 @@ export default function usePhoto(id?: string) {
     isLoadingPhoto: isLoading,
     createPhoto,
     deletePhoto,
+    updatePhoto,
   };
 }
