@@ -54,6 +54,15 @@ pnpm dev
 
 Após esses passos, a aplicação frontend estará disponível em `http://localhost:5173` (ou outra porta configurada pelo Vite)
 
+### 4. Imagens do projeto
+
+<div style="display: flex; flex-direction: column; align-items: center;">  
+  <img alt="Tela de lançamentos concentrados" src=".github/main-page.png" style="margin: 5px;">
+  <img alt="Tela de gráficos" src=".github/filter-by-album.png" style="margin: 5px;">
+  <img alt="Tela do perfil" src=".github/new-album.png" style="margin: 5px;">
+  <img alt="Tela de login" src=".github/new-picture.png" style="margin: 5px;">
+</div>
+
 ---
 
 Feito por **Gustavo Volke**.
